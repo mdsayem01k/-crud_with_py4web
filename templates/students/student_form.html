@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" rel="stylesheet">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Student Form</h1>
+            <form method="POST">
+                [[if len(edit_data)==0:]]
+                <div class="field">
+                    <label class="label" for="name">Name</label>
+                    <div class="control">
+                        <input class="input" type="text" id="name" name="name"  required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="class">Class</label>
+                    <div class="control">
+                        <input class="input" type="text" id="class" name="class"  required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="roll">Roll Number</label>
+                    <div class="control">
+                        <input class="input" type="number" id="roll" name="roll" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="contact">Contact</label>
+                    <div class="control">
+                        <input class="input" type="text" id="contact" name="contact"  required>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+                [[else:]]
+                    [[for record in edit_data:]]
+                <div class="field">
+                    <label class="label" for="name">Name</label>
+                    <div class="control">
+                        <input class="input" type="text" id="name" name="name" value="[[=record['Name']]]" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="class">Class</label>
+                    <div class="control">
+                        <input class="input" type="text" id="class" name="class"  value="[[=record['Class']]]" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="roll">Roll Number</label>
+                    <div class="control">
+                        <input class="input" type="number" id="roll" name="roll"  value="[[=record['Roll']]]" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="contact">Contact</label>
+                    <div class="control">
+                        <input class="input" type="text" id="contact" name="contact"  value="[[=record['Contact']]]"  required>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="hidden" id="id" name="id" value="[[=record['id']]]" required>
+                        <button class="button is-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+                [[pass]]
+                [[pass]]
+            </form>
+        </div>
+    </section>
+</body>
+</html>

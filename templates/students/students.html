@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" rel="stylesheet">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Students</h1>
+            <a class="button is-primary" href="[[=URL('students/create_student')]]">Add New Student</a>
+            <table class="table is-striped is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th>Roll</th>
+                        <th>Contact</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    [[for i in range(len(records_list)):]]
+                    <tr>
+                        <td>[[=records_list[i]['id']]]</td>
+                        <td>[[=records_list[i]['Name']]]</td>
+                        <td>[[=records_list[i]['Class']]]</td>
+                        <td>[[=records_list[i]['Roll']]]</td>
+                        <td>[[=records_list[i]['Contact']]]</td>
+                        <td>
+                            <a class="button is-small is-info" href="[[=URL('students/update_student', vars=dict(id=records_list[i]['id']))]]">Edit</a>
+            <a class="button is-small is-danger" href="[[=URL('students/delete', vars=dict(id=records_list[i]['id']))]]">Delete</a>
+                        </td>
+                    </tr>
+                    
+                    [[pass]]
+                    
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
